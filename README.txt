@@ -65,7 +65,7 @@ RSV: Respiratory Syncytial Virus Live Challenge
 
 ----
 
-This folder contains the scripts for the Servius et al. "Predicting Class Switch Recombination in B-cells from Antibody Repertoire Data" manuscript. 
+This folder contains the scripts for the Servius et al. "Predicting Class Switch Recombination in B-cells from Antibody Repertoire Data" manuscript. Please refer to the paper (https://doi.org/10.1002/bimj.202300171) for the complete supplementary files including processed data and reduced scripts.
 
 .	main.py		This file produces the figures and tables from the paper by pulling from the ./results folder. Please note that it runs some scripts within the ./scripts folder, check to see that the numCores variables in these scripts work for your system before running.
 
@@ -73,23 +73,12 @@ This folder contains the scripts for the Servius et al. "Predicting Class Switch
 	dataProcessing_CGC.R	script used to process the Hospitalised COVID-19 Patient and Respiratory Syncytial Virus Live Challenge (Stewart et al. Frontiers 2022) data, including the data cleaning and the clonal group collapse (CGC) - the dataset will need to be downloaded in to the top level of this data folder to use this script.
 	func_dataProcessing.R	contained are the additional functions that are called in the dataProcessing_CGC.R script to process the data. Also includes the function used for oversampling the data for the training, however this has been separately placed in the ./functions folder and will be referenced from there for the model scripts.
 	
-	/processed
-			covid-cg.txt		processed Hospitalised COVID-19 Patient data from Stewart et al. Frontiers (2022) using dataProcessing_CGC.R script.
-			rsv-cg.txt		processed Respiratory Syncytial Virus Live Challenge data from Stewart et al. Frontiers (2022) using dataProcessing_CGC.R script.
-			
-/clean_noCGC		contains the intermediate step for the data-processing at the cleaning stage, before clonal group collapse - used to produce part of Table S1 in main.py.
-	
-
 ./functions
 	func_data-balance.R	function used for oversampling for the minority class which indicates a cross-class clonal group.
 	func_LASSO-CV-AD.R	function used to perform the all-donor (AD) cross-validation of the hyperparameter (lambda) search for LASSO logistic regression (LR).
 	func_LASSO-CV-L1DO	function used to perform the leave-one-donor-out (L1DO) cross-validation of the hyperparameter (lambda) search for LASSO logistic regression (LR).
 	func_predictThreshold.R	function used to convert the probability prediction from LR and LASSO LR into binary class prediction.
 
-
-./reduced-scripts		
-	COVID-RSV_LASSO_RF_RF-NSx_SVM.Rmd	markdown file with the "reduced" scripts for RF, RF-NSx and SVM scripts, these have the hyperparameter search removed from the scripts and instead loads them from the ./hyperparam folder.
-	/hyperparam				contains the hyperparameters selected for the RF, RF-NSx and SVM scripts to reduce computation time.
 
 ./scripts
 	CP_LR.R 		LR model training and fitting on CP.
@@ -117,9 +106,6 @@ This folder contains the scripts for the Servius et al. "Predicting Class Switch
         RSV_L1DO_GLMM.R         GLMM L1DO tuning, training and fitting on RSV.
 	RSV_L1DO_RFx_modInt.R	RF-NSx L1DO single run on RSV for the model interpretation section in the paper.
 	CP_L1DO_RFx_modInt.R    RF-NSx L1DO single run on CP for the model interpretation section in the paper.
-
-./results	the outputs for the scripts that are needed to produce the figures and tables in the manuscipt will be/are saved here. 
-	/figures_tables		the figures and tables produced from the data for the manuscript and support information are saved here.
 
 ----
 
